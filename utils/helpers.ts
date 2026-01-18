@@ -14,6 +14,7 @@ export const calculateAge = (dob: string): number => {
 
 export const calculateBMR = (profile: UserProfile): number => {
   const age = calculateAge(profile.dob);
+  // Mifflin-St Jeor Equation
   if (profile.gender === 'male') {
     return (10 * profile.weight) + (6.25 * profile.height) - (5 * age) + 5;
   } else {
