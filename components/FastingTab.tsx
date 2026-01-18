@@ -67,17 +67,17 @@ const FastingTab: React.FC<FastingTabProps> = ({ fastingState, fastingLogs, onSt
 
   return (
     <div className="p-6">
-      <div className="flex flex-col items-center mb-12">
+      <div className="flex flex-col items-center mb-10">
         <CircularProgress 
           percentage={fastingState.isActive ? percentage : 0} 
           label={fastingState.isActive ? formatTime(elapsedMs) : "00:00:00"} 
           subLabel={fastingState.isActive ? "Time Fasted" : "Ready to start?"}
           color="text-indigo-600"
-          size={290}
+          size={250}
           strokeWidth={16}
         />
         
-        <div className="mt-10 w-full max-w-[320px]">
+        <div className="mt-8 w-full max-w-[320px]">
           {fastingState.isActive ? (
             <button 
               onClick={() => setEndModalOpen(true)}
