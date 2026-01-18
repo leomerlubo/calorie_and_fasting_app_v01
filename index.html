@@ -8,7 +8,6 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
     <title>#SelfLove - Wellness & Fasting</title>
-    <link rel="manifest" href="./manifest.json" />
     
     <!-- Scripts for Browser-side Transpilation -->
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -35,6 +34,10 @@
         background: #cbd5e1;
         border-radius: 10px;
       }
+      /* Ensure the root container is visible */
+      #root {
+        min-height: 100vh;
+      }
     </style>
 
     <script type="importmap">
@@ -44,21 +47,15 @@
     "react-dom": "https://esm.sh/react-dom@19.0.0",
     "react-dom/client": "https://esm.sh/react-dom@19.0.0/client",
     "@google/genai": "https://esm.sh/@google/genai",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
-    "react/": "https://esm.sh/react@^19.2.3/"
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/"
   }
 }
 </script>
   </head>
   <body>
     <div id="root"></div>
+    <!-- Load the main app logic -->
     <script type="text/babel" data-presets="react,typescript" src="./index.tsx"></script>
-    <script>
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-          navigator.serviceWorker.register('./sw.js').catch(err => console.error('SW registration failed:', err));
-        });
-      }
-    </script>
   </body>
 </html>
