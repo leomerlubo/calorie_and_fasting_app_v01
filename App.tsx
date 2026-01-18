@@ -114,14 +114,14 @@ const App: React.FC = () => {
   return (
     <div className="min-h-screen bg-slate-50 flex flex-col max-w-md mx-auto relative shadow-2xl border-x border-slate-200 overflow-hidden">
       {/* Header */}
-      <header className="bg-white px-6 pt-6 pb-2 border-b border-slate-50 flex justify-between items-center">
+      <header className="bg-white px-6 pt-6 pb-4 flex justify-between items-center">
         <div>
           <h1 className="text-2xl font-black bg-gradient-to-r from-rose-500 to-orange-500 bg-clip-text text-transparent">#SelfLove</h1>
-          <p className="text-slate-400 text-[10px] font-bold uppercase tracking-[0.2em]">1 Corinthians 6:19-20</p>
+          <p className="text-slate-400 text-[10px] font-bold uppercase tracking-[0.2em]">Wellness & Vitality</p>
         </div>
         <button 
           onClick={() => setActiveTab('settings')}
-          className={`p-2 rounded-xl transition-colors ${activeTab === 'settings' ? 'bg-rose-50 text-rose-600' : 'bg-slate-50 text-slate-400 hover:text-slate-600'}`}
+          className={`p-3 rounded-2xl transition-all shadow-sm ${activeTab === 'settings' ? 'bg-rose-500 text-white shadow-rose-200' : 'bg-slate-50 text-slate-400 hover:text-slate-600'}`}
         >
           <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
@@ -130,27 +130,37 @@ const App: React.FC = () => {
         </button>
       </header>
 
-      {/* Top Navigation */}
-      <nav className="bg-white border-b border-slate-100 flex items-center px-6 gap-8">
+      {/* Main Tabs - 50/50 Split */}
+      <nav className="bg-white border-b border-slate-100 grid grid-cols-2">
         <button 
           onClick={() => setActiveTab('calories')}
-          className={`relative py-4 text-xs font-black uppercase tracking-widest transition-all ${activeTab === 'calories' ? 'text-rose-600' : 'text-slate-400 hover:text-slate-600'}`}
+          className={`relative py-5 text-sm font-black uppercase tracking-widest transition-all ${activeTab === 'calories' ? 'text-rose-600 bg-rose-50/30' : 'text-slate-400 hover:text-slate-600'}`}
         >
-          Calories
-          {activeTab === 'calories' && <div className="absolute bottom-0 left-0 right-0 h-1 bg-rose-500 rounded-t-full" />}
+          <div className="flex items-center justify-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+            </svg>
+            Calories
+          </div>
+          {activeTab === 'calories' && <div className="absolute bottom-0 left-0 right-0 h-1.5 bg-rose-500 rounded-t-full" />}
         </button>
         <button 
           onClick={() => setActiveTab('fasting')}
-          className={`relative py-4 text-xs font-black uppercase tracking-widest transition-all flex items-center gap-2 ${activeTab === 'fasting' ? 'text-indigo-600' : 'text-slate-400 hover:text-slate-600'}`}
+          className={`relative py-5 text-sm font-black uppercase tracking-widest transition-all flex items-center justify-center gap-2 ${activeTab === 'fasting' ? 'text-indigo-600 bg-indigo-50/30' : 'text-slate-400 hover:text-slate-600'}`}
         >
-          Fasting
-          {fastingState.isActive && (
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-indigo-500"></span>
-            </span>
-          )}
-          {activeTab === 'fasting' && <div className="absolute bottom-0 left-0 right-0 h-1 bg-indigo-500 rounded-t-full" />}
+          <div className="flex items-center justify-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            Fasting
+            {fastingState.isActive && (
+              <span className="relative flex h-2.5 w-2.5">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-indigo-500"></span>
+              </span>
+            )}
+          </div>
+          {activeTab === 'fasting' && <div className="absolute bottom-0 left-0 right-0 h-1.5 bg-indigo-500 rounded-t-full" />}
         </button>
       </nav>
 

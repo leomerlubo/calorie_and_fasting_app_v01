@@ -3,7 +3,7 @@
   "name": "#SelfLove Wellness",
   "short_name": "SelfLove",
   "description": "Wellness tracker for calories and fasting.",
-  "start_url": "index.html",
+  "start_url": "./",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#f43f5e",
